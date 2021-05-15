@@ -2,7 +2,7 @@
   "name": "Employee-Directory",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://bahuisken.github.io/employee-directory/",
+  "homepage": "https://bahuisken.github.io/Employee-Directory",
   "dependencies": {
     "@testing-library/jest-dom": "^5.12.0",
     "@testing-library/react": "^11.2.6",
