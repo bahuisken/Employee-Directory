@@ -1,22 +1,27 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Search from "./pages/Search";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Wrapper from "./components/Wrapper";
+import Header from "./Components/Header";
+import Main from "./Components/Main";
+import Footer from "./Components/Footer/";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <Header />
-        <Wrapper>
-          <Route exact path="/" component={Search} />
-        </Wrapper>
+class App extends React.Component {
+  state = {
+    search: "",
+  };
+
+  newSearch = (input) => {
+    this.setState({ search: input });
+  };
+
+  render() {
+    return (
+      <>
+        <Header newSearch={this.newSearch} />
+        <Main search={this.state.search} />
         <Footer />
-      </div>
-    </Router>
-  );
+      </>
+    );
+  }
 }
 
 export default App;

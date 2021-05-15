@@ -1,8 +1,8 @@
 import React from "react";
+import SearchForm from "../SearchForm";
 import "./style.css";
 
-// Depending on the current path, this component sets the "active" className on the appropriate navigation link item
-function Header() {
+function Header(props) {
   return (
     <header>
       <div className="text-center bg-image bg-image-custom">
@@ -11,6 +11,7 @@ function Header() {
             <div className="text-white mx-auto">
               <h1 className="mt-5">Employee Directory</h1>
               <p className="mb-3">Search and sort all the employees!</p>
+              <SearchForm newSearch={props.newSearch} />
             </div>
           </div>
         </div>
