@@ -16,6 +16,7 @@ function SearchForm(props) {
           className="form-control"
           placeholder="Type in an Employees name to filter"
           id="employee"
+          autocomplete="off"
         />
       </div>
     </form>
