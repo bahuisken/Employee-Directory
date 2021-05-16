@@ -31,8 +31,9 @@ class Main extends React.Component {
   };
   // https://www.smashingmagazine.com/2020/03/sortable-tables-react/
 
-  sortedNames = () => {
+  sortedFirstNames = () => {
     this.setState({ sortDobArrow: "" });
+    this.setState({ sortLastNameArrow: "" });
     let sortedEmployees = this.state.employees;
     let sort = sortedEmployees.sort((a, b) => {
       if (a.name.first < b.name.first) {
@@ -45,17 +46,42 @@ class Main extends React.Component {
     });
     if (this.state.sort === "descending") {
       this.setState({ sort: "ascending" });
-      this.setState({ sortNameArrow: "▲" });
+      this.setState({ sortFirstNameArrow: "▲" });
     } else {
       this.setState({ sort: "descending" });
-      this.setState({ sortNameArrow: "▼" });
+      this.setState({ sortFirstNameArrow: "▼" });
+      sort.reverse();
+    }
+    this.setState({ employee: sortedEmployees });
+  };
+
+  sortedLastNames = () => {
+    this.setState({ sortDobArrow: "" });
+    this.setState({ sortFirstNameArrow: "" });
+    let sortedEmployees = this.state.employees;
+    let sort = sortedEmployees.sort((a, b) => {
+      if (a.name.last < b.name.last) {
+        return -1;
+      }
+      if (a.name.last > b.name.last) {
+        return 1;
+      }
+      return 0;
+    });
+    if (this.state.sort === "descending") {
+      this.setState({ sort: "ascending" });
+      this.setState({ sortLastNameArrow: "▲" });
+    } else {
+      this.setState({ sort: "descending" });
+      this.setState({ sortLastNameArrow: "▼" });
       sort.reverse();
     }
     this.setState({ employee: sortedEmployees });
   };
 
   sortedDob = () => {
-    this.setState({ sortNameArrow: "" });
+    this.setState({ sortFirstNameArrow: "" });
+    this.setState({ sortLastNameArrow: "" });
     let sortedEmployees = this.state.employees;
     let sort = sortedEmployees.sort((a, b) => {
       if (a.dob.date < b.dob.date) {
@@ -97,9 +123,8 @@ class Main extends React.Component {
               className="img-fluid emp-image"
             />
           </td>
-          <td>
-            {employee.name.first} {employee.name.last}
-          </td>
+          <td>{employee.name.first}</td>
+          <td>{employee.name.last}</td>
           <td>
             <a href={`mailto:${employee.email}`}>{employee.email}</a>
           </td>
@@ -121,10 +146,17 @@ class Main extends React.Component {
                   <th></th>
                   <th
                     className="sorter"
-                    onClick={this.sortedNames}
-                    title="click to sort by Name"
+                    onClick={this.sortedFirstNames}
+                    title="click to sort by First Name"
                   >
-                    NAME {this.state.sortNameArrow}
+                    FIRST NAME {this.state.sortFirstNameArrow}
+                  </th>
+                  <th
+                    className="sorter"
+                    onClick={this.sortedLastNames}
+                    title="click to sort by Last Name"
+                  >
+                    LAST NAME {this.state.sortLastNameArrow}
                   </th>
                   <th>EMAIL</th>
                   <th>PHONE</th>
