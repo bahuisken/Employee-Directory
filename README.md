@@ -20,6 +20,7 @@ An employee or manager would benefit greatly from being able to view non-sensiti
 - [Node.js](https://nodejs.org/en/)
 - [Bootstrap](https://getbootstrap.com/)
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
+- [Random User API](https://randomuser.me/)
 
 ## Usage
 
